@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-title>
+      <img 
+        src="assets/logo.png"
+        class="app_logo"
+      />
+      Inspire Pic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label 
+      position="floating" 
+      color="dark"
+    >
+      Type of Photography:
+    </ion-label>
+    <ion-input [(ngModel)]="typeOfPhotoInput"></ion-input>
+  </ion-item>
+  <ion-button 
+    expand="full" 
+    (click)="getInputPhotos()" 
+    color="dark"
+  >
+    Submit
+  </ion-button>
+  <div *ngIf="!typeOfPhotoInput">
+    <div *ngFor="let style of photos | keyvalue">
+      <div class="app_slides">
+        <h3>{{ style.key }}</h3>
+        <ion-slides [options]="slideOpts">
+            <ion-slide *ngFor="let photo of style.value">
+              <ion-card>
+                <ion-card-content>
+                  <img [src]="photo.urls.regular" [alt]="photo.alt_description">
+                  <ion-item>
+                    <ion-text>
+                      Photographer: {{ photo.user.first_name }} - {{ photo.user.instagram_username ? '@' + photo.user.instagram_username : '' }}
+                    </ion-text>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="typeOfPhotoInput">
+    <h3>Showing results for {{ typeOfPhotoInput.toUpperCase() }}</h3>
+    <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let photo of inputPhotos">
+          <ion-card>
+            <ion-card-content>
+              <img [src]="photo.urls.regular" [alt]="photo.alt_description">
+              <ion-item>
+                <ion-text>
+                  Photographer: {{ photo.user.first_name }} @{{ photo.user.instagram_username }}
+                </ion-text>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-footer>
+    <ion-toolbar class="app_footer">
+      <ion-title size="small">
+        &copy; Inspire Pic
+      </ion-title>
+      <ion-title size="small">
+        All Rights Reserved
+      </ion-title>
+      <ion-title size="small">
+        By Rodrigo Martins
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
