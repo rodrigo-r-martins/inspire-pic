@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  unsplash_API_KEY: '5UjT3DIsJ29faetingG040uys7rjl-zIrVQh0akGWHA'
+  unsplash_API_KEY: 'YOUR API KEY GOES HERE'
 };
 
 /*
