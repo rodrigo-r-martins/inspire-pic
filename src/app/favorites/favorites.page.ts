@@ -1,39 +1,26 @@
 import { PhotoInfoModalPage } from './../photo-info-modal/photo-info-modal.page';
 import { ModalController } from '@ionic/angular';
-import { FavoriteService } from './../service/favorite.service';
 import { ApiService } from './../service/api.service';
+import { FavoriteService } from './../service/favorite.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-popular',
-  templateUrl: 'popular.page.html',
-  styleUrls: ['popular.page.scss']
+  selector: 'app-favorites',
+  templateUrl: './favorites.page.html',
+  styleUrls: ['./favorites.page.scss'],
 })
-export class PopularPage implements OnInit {
+export class FavoritesPage implements OnInit {
 
-  popularPhotos: any;
+  favoritePhotos: any;
 
   constructor(
-    private apiService: ApiService,
     private favoriteService: FavoriteService,
+    private apiService: ApiService,
     private modal: ModalController
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.popularPhotos = this.getPhotos();
-  }
-
-  async getPhotos() {
-    let data = await this.apiService.getPopularPhotos();
-    return await data['response'].results;
-  }
-
-  isFavorite(photoId: string) {
-    return this.favoriteService.isFavorite(photoId);
-  }
-
-  manageFavoritePhoto(photo: string) {
-    this.favoriteService.manageFavorite(photo);
+    this.favoritePhotos = this.favoriteService.favoritePhotos;
   }
 
   async openPhotoModal(photoId: string) {
@@ -46,4 +33,13 @@ export class PopularPage implements OnInit {
     });
     return await modal.present();
   };
+
+  isFavorite(photoId: string) {
+    return this.favoriteService.isFavorite(photoId);
+  }
+
+  manageFavoritePhoto(photo: any) {
+    this.favoriteService.manageFavorite(photo);
+    console.log(this.favoriteService.favoritePhotos);
+  }
 }

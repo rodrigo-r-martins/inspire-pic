@@ -1,4 +1,4 @@
-.popular_cards {
+.favorite_cards {
   ion-row {
     width: 100% !important;
 
@@ -21,8 +21,9 @@
   }
 }
 
-.popular_content {
+.favorite_content {
   padding: 5px 0 10px 0;
+  border-bottom: none;
   
   div {
     h5 {
@@ -32,7 +33,7 @@
   }
 }
 
-.popular_favorite {
+.favorite_favorite {
   position: absolute;
   font-size: 40px;
   top: 84%;

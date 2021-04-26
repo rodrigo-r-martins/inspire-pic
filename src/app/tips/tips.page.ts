@@ -1,4 +1,6 @@
+import { CheatSheetModalPage } from './../cheat-sheet-modal/cheat-sheet-modal.page';
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tips',
@@ -7,6 +9,13 @@ import { Component } from '@angular/core';
 })
 export class TipsPage {
 
-  constructor() {}
+  constructor(private modal: ModalController) {}
 
+  async openCheatSheet() {
+    const modal = await this.modal.create({
+      component: CheatSheetModalPage,
+      swipeToClose: true
+    });
+    return await modal.present();
+  }
 }

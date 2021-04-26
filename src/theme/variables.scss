@@ -2,6 +2,26 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+:root {
+  --ion-color-default: #052bfa;
+  --ion-color-default-rgb: 5,43,250;
+  --ion-color-default-contrast: #ffffff;
+  --ion-color-default-contrast-rgb: 255,255,255;
+  --ion-color-default-shade: #0426dc;
+  --ion-color-default-tint: #1e40fb;
+}
+
+.ion-color-default {
+  --ion-color-base: var(--ion-color-default);
+  --ion-color-base-rgb: var(--ion-color-default-rgb);
+  --ion-color-contrast: var(--ion-color-default-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-default-contrast-rgb);
+  --ion-color-shade: var(--ion-color-default-shade);
+  --ion-color-tint: var(--ion-color-default-tint);
+}
+
+
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -68,7 +88,7 @@
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #ebebeb;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;

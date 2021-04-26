@@ -1,0 +1,18 @@
+ion-content {
+  div {
+    padding: 0 10px;
+
+    p, li {
+      font-size: 15px;
+      font-weight: 100;
+      color: rgb(223, 223, 223);
+      font-family: 'Cardo', sans-serif;
+    }
+
+    ion-button {
+      a {
+        color: black;
+      }
+    }
+  }
+}

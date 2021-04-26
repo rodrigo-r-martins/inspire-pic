@@ -1,6 +1,8 @@
+import { PhotoInfoModalPage } from './../photo-info-modal/photo-info-modal.page';
+import { FavoriteService } from './../service/favorite.service';
 import { ApiService } from './../service/api.service';
 import { AfterViewInit, Component } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,36 +19,46 @@ export class HomePage implements AfterViewInit {
   };
 
   typeOfPhotoInput: string;
-  photos: any;
+  photos: {};
   inputPhotos: any;
 
   constructor(
     private apiService: ApiService,
-    private toast: ToastController
+    private toast: ToastController,
+    private modal: ModalController,
+    private favoriteService: FavoriteService,
     ) {}
 
   ngAfterViewInit() {
     this.photos = {
-      Architectural: this.getPhotos('architectural'),
-      Wild: this.getPhotos('wild'),
-      Wanderlust: this.getPhotos('wanderlust'),
-      Sports: this.getPhotos('sports')
+      landscape: this.getPhotos('landscape'),
+      travel: this.getPhotos('travel'),
+      night: this.getPhotos('night'),
+      abstract: this.getPhotos('abstract'),
+      wild: this.getPhotos('wild')
     };
   };
 
-  getPhotos(typeOfPhoto: string) {
-    this.apiService.getPhotos(typeOfPhoto);
+  async getPhotos(typeOfPhoto: string) {
+    let data = await this.apiService.getPhotosByType(typeOfPhoto);
+    return await data['response'].results;
   }
 
   async getInputPhotos() {
-    let data: any = await this.apiService.getPhotos(this.typeOfPhotoInput);
+    let data: any = await this.apiService.getPhotosByType(this.typeOfPhotoInput);
     if (data.errors) {
-      data = null;
       this.showToast(data.errors[0]);
     } else {
       this.inputPhotos = await data.response.results;
-      console.log(this.inputPhotos);
     }
+  }
+
+  isFavorite(photoId: string) {
+    return this.favoriteService.isFavorite(photoId);
+  }
+
+  manageFavoritePhoto(photo: {}) {
+    this.favoriteService.manageFavorite(photo);  
   }
 
   async showToast(message: string) {
@@ -58,4 +70,15 @@ export class HomePage implements AfterViewInit {
     });
     toast.present();
   }
+
+  async openPhotoModal(photoId: string) {
+    let data: any = await this.apiService.getExactPhoto(photoId);
+    const modal = await this.modal.create({
+      component: PhotoInfoModalPage,
+      componentProps: {
+        photoData: data
+      }
+    });
+    return await modal.present();
+  };
 }

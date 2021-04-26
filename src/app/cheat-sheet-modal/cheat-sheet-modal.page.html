@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item lines=none>
+      <div>
+        <div>
+          <img src="/assets/logo.png" />
+          <h3>PicTips</h3>
+        </div>
+        <div>
+          <p>"Photography is a way of feeling, of touching, of loving. What you have caught on film is captured forever… It remembers little things, long after you have forgotten everything." - <a href="https://en.wikipedia.org/wiki/Aaron_Siskind" target="_blank">Aaron Siskind</a></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <pinch-zoom>
+      <ion-img src="/assets/photography-cheat-sheet-card.png"></ion-img> 
+    </pinch-zoom>
+  </div>
+</ion-content>

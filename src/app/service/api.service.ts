@@ -1,3 +1,5 @@
+import { environment } from './../../environments/environment';
+import { LoggerService } from './logger.service';
 import { Injectable } from '@angular/core';
 import { createApi } from 'unsplash-js';
 
@@ -7,21 +9,57 @@ import { createApi } from 'unsplash-js';
 export class ApiService {
 
   unsplashApi = createApi({
-    accessKey: '5UjT3DIsJ29faetingG040uys7rjl-zIrVQh0akGWHA', 
+    accessKey: environment.unsplash_API_KEY, // ENTER YOUR API KEY
   });
+  random = 100;
 
-  constructor() { }
+  constructor(private logger: LoggerService) { }
 
-  getPhotos(typeOfPhoto: string) {
+  
+  getPhotosByType(typeOfPhoto: string) {
     return this.unsplashApi.search.getPhotos({
-      query: typeOfPhoto
+      query: typeOfPhoto,
+      page: 1,
+      perPage: 30,
     })
     .then(res => {
-      // console.log(res.response.results);
+      this.logger.log(`apiService > getPhotosByType > ${typeOfPhoto}:`);
+      this.logger.log(res.response);
       return res; 
     })
     .catch(err => {
-      console.log(err);
+      this.logger.log("apiService > getPhotosByType > Error: " + err);
+    });
+  };
+
+  getPopularPhotos() {
+    return this.unsplashApi.search.getPhotos({
+      query: 'explore',
+      orderBy: 'relevant',
+      page: 1,
+      perPage: 30
+    })
+    .then(res => {
+      this.logger.log("apiService > getPopularPhotos:");
+      this.logger.log(res.response);
+      return res;
+    })
+    .catch(err => {
+      this.logger.log("apiService > getPopularPhotos > Error: " + err);
+    });
+  };
+
+  getExactPhoto(photoId: string) {
+    return this.unsplashApi.photos.get({
+      photoId: photoId
+    })
+    .then(res => {
+      this.logger.log("apiService > getExactPhoto:");
+      this.logger.log(res.response);
+      return res.response;
+    })
+    .catch(err => {
+      this.logger.log("apiService > getExactPhoto > Error: " + err);
     });
   };
 }
