@@ -1,6 +1,7 @@
 <h1>Inspire-Pic</h1>
 
 • Developed a mobile web application for photographers that allows users to be inspired by other photographs, also receiving the photograph specifications to help users to take a good photo, such as exposure time, aperture and iso. 
+
 • The app was developed using Ionic framework with Angular, fetching the data from Unsplash API (https://unsplash.com/developers) to get the photographs.
 
 To run it use:
