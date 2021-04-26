@@ -1,0 +1,14 @@
+ion-content {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ion-img {
+      border-top: 5px solid rgb(55, 55, 55);
+      padding-bottom: 20px;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

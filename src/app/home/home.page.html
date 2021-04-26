@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <div>
+        <div>
+          <img src="/assets/logo.png" />
+          <h3>InspirePic</h3>
+        </div>
+        <div>
+          <p>"Photography is the story I fail to put into words." - <a href="https://www.destinsparks.com/" target="_blank">Destin Sparks</a></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>  
+
+
+<ion-content>
+  <ion-item lines="none" class="home_item_search">
+    <ion-searchbar 
+      [(ngModel)]="typeOfPhotoInput"
+      (ngModelChange)="getInputPhotos()"
+      animated
+      placeholder="Search for nature, portrait, minimalist..."
+      class="home_search ion-no-border"
+    ></ion-searchbar>
+  </ion-item>
+  <div class="global_content" *ngIf="!typeOfPhotoInput">
+    <h5>Photography Types</h5>
+    <p>There are plenty of different types of photography out there in the world. Here we showcase some examples to get the creative juices flowing.</p>
+  </div>
+  <div *ngIf="!typeOfPhotoInput">
+    <div *ngFor="let style of photos | keyvalue">
+      <div class="home_slides">
+        <h5>#{{ style.key }}</h5>
+        <ion-slides [options]="slideOpts">
+            <ion-slide *ngFor="let photo of style.value | async">
+              <ion-card>
+                <ion-card-content class="ion-no-padding">
+                  <img 
+                    src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+                    [alt]="photo.alt_description"
+                    (click)="openPhotoModal(photo.id)"
+                  >
+                  <ion-icon 
+                    class="home_favorite" 
+                    name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
+                    (click)="manageFavoritePhoto(photo)"
+                  ></ion-icon>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+  </div>
+  <div class="home_result" *ngIf="typeOfPhotoInput">
+    <div>
+      <h5>Showing results for {{ typeOfPhotoInput.toUpperCase() }}</h5>
+    </div>
+    <div>
+      <ion-row>
+        <ion-card *ngFor="let photo of inputPhotos">
+          <ion-card-content class="ion-no-padding">
+            <img 
+              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+              alt="{{ photo.alt_description ? photo.alt_description : 'ERROR LOADING IMAGE..'}}"
+              (click)="openPhotoModal(photo.id)"
+            >
+            <ion-icon 
+              class="home_favorite_input" 
+              name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
+              (click)="manageFavoritePhoto(photo)"
+            ></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </div>
+  </div>
+  <br />
+</ion-content>

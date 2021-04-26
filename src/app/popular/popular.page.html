@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines=none>
+      <div>
+        <div>
+          <img src="/assets/logo.png" />
+          <h3>PopularPics</h3>
+        </div>
+        <div>
+          <p>"Photography for me is not looking, it’s feeling. If you can’t feel what you’re looking at, then you’re never going to get others to feel anything when they look at your pictures." - <a href="https://donmccullin.com/don-mccullin/" target="_blank">Don McCullin</a></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="global_content popular_content">
+    <div>
+      <h5>#popular</h5>
+    </div>
+    <div class="popular_cards">
+      <ion-row>
+        <ion-card *ngFor="let photo of popularPhotos | async">
+          <ion-card-content class="ion-no-padding">
+            <img 
+              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+              alt="{{ photo.alt_description ? photo.alt_description : 'ERROR LOADING IMAGE..'}}"
+              (click)="openPhotoModal(photo.id)"
+            >
+            <ion-icon 
+              class="popular_favorite" 
+              name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
+              (click)="manageFavoritePhoto(photo)"
+            ></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

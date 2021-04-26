@@ -24,3 +24,115 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Oswald&display=swap');
+
+ion-content {
+  font-family: 'Oswald', sans-serif;
+  --background: linear-gradient(to right, rgb(35, 35, 35), rgb(55, 55, 55));
+  --color: white;
+}
+
+ion-header {
+
+  ion-toolbar {
+    --background: #e9edf0;
+    background: #e9edf0;
+
+    ion-item {
+      --background: #e9edf0;
+      background: #e9edf0;
+
+      div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        div {
+          display: flex;
+          flex-direction: row;
+          align-self: flex-start;  
+
+          img {
+            justify-content: flex-start;
+            width: 35px;
+            height: auto;
+            margin-right: 10px;
+          }
+
+          h3 {
+            font-family: 'Oswald', sans-serif;
+          }
+
+          p {
+            font-style: italic;
+            font-size: 10px;
+            margin-top: 0;
+            margin-bottom: 7px;
+            color:rgba(0, 0, 0, 0.43);
+            text-overflow: inherit;
+            white-space: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-searchbar {
+  .searchbar-input-container {
+    input {
+      font-size: 14px !important;
+    }
+  }
+}
+
+ion-button {
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+}
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0 !important;
+  width: 100%;
+  border-top: 2px solid #e9edf0 !important;
+  border-bottom: 2px solid #e9edf0 !important;
+  border-radius: 0 !important;
+
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      object-fit: cover;
+      background-size: auto;
+      width: 100%;
+      height: 240px !important;
+      margin: 0;
+    }
+  }
+}
+
+.global_content {
+  padding: 5px 10px 10px 10px;
+  font-family: 'Oswald', sans-serif;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  
+  h5 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 100;
+    text-align: justify;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}

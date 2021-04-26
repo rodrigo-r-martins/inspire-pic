@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item lines=none>
+      <div>
+        <div>
+          <img src="/assets/logo.png" />
+          <h3>PicInfo</h3>
+        </div>
+        <div>
+          <p>"The best thing about a picture is that it never changes, even when the people in it do." - <a href="https://www.famousphotographers.net/andy-warhol" target="_blank">Andy Warhol</a></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="global_content info_content">
+    <div>
+      <h5>Do you like this photo?</h5>
+      <p>Check bellow some specifications about this photography!</p>
+    </div>
+    <div class="info_cards">
+      <ion-row>
+        <ion-card>
+          <ion-card-content class="ion-no-padding">
+            <pinch-zoom>
+              <img 
+                src="{{ photoData.urls.full ? photoData.urls.full : 'assets/not_found_image.png' }}" 
+                alt="{{ photoData.alt_description ? photoData.alt_description : 'ERROR LOADING IMAGE..'}}"
+              >
+            </pinch-zoom>
+            <ion-icon 
+              class="info_favorite" 
+              name="{{ isFavorite(photoData.id) ? 'heart' : 'heart-outline' }}"
+              (click)="manageFavoritePhoto(photoData)"
+            ></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+      <div class="info_pic">
+        <div>
+          <h5 id="info_pic_user">Photo by: {{ photoData.user.name }} on Unsplash | <ion-icon name="logo-instagram"></ion-icon> {{ photoData.user.instagram_username ? photoData.user.instagram_username : "unavailable" }}</h5>
+        </div>
+        <div class="info_specs_title">
+          <h5>Photography Specifications:</h5>
+        </div>
+        <div class="info_specs">
+          <div>
+            <h6>Camera:</h6>
+            <p>{{ photoData.exif.model }}</p>
+          </div>
+          <div>
+            <h6>Aperture:</h6>
+            <p>{{ photoData.exif.aperture }}</p>
+          </div>
+          <div>
+            <h6>Exposure Time:</h6>
+            <p>{{ photoData.exif.exposure_time }}</p>
+          </div>
+          <div>
+            <h6>Iso:</h6>
+            <p>{{ photoData.exif.iso }}</p>
+          </div>
+          <div>
+            <h6>Focal Length:</h6>
+            <p>{{ photoData.exif.focal_length }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

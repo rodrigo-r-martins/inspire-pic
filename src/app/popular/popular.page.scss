@@ -1,0 +1,41 @@
+.popular_cards {
+  ion-row {
+    width: 100% !important;
+
+    ion-card {
+      padding: 0 !important;
+      margin: 0 !important;
+      margin-bottom: 30px !important;
+      position: relative;
+      border-top: 2px solid #e9edf0 !important;
+      border-bottom: 2px solid #e9edf0 !important;
+
+      ion-card-content {
+
+        img {
+          background-size: contain;
+          height: 280px !important;
+        }
+      }
+    }
+  }
+}
+
+.popular_content {
+  padding: 5px 0 10px 0;
+  
+  div {
+    h5 {
+      padding-bottom: 8px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.popular_favorite {
+  position: absolute;
+  font-size: 40px;
+  top: 84%;
+  left: 87%;
+  color: #f36440;
+}

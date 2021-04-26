@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines=none>
+      <div>
+        <div>
+          <img src="/assets/logo.png" />
+          <h3>FavoritePics</h3>
+        </div>
+        <div>
+          <p>"The camera is an instrument that teaches people how to see without a camera." - <a href="https://www.artsy.net/artist/dorothea-lange" target="_blank">Dorothea Lange</a></p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="global_content favorite_content">
+    <div>
+      <h5>#favorites</h5>
+    </div>
+    <div class="favorite_cards">
+      <ion-row>
+        <ion-card *ngFor="let photo of favoritePhotos">
+          <ion-card-content class="ion-no-padding">
+            <img 
+              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+              alt="{{ photo.alt_description ? photo.alt_description : 'ERROR LOADING IMAGE..'}}"
+              (click)="openPhotoModal(photo.id)"
+            >
+            <ion-icon 
+              class="favorite_favorite" 
+              name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
+              (click)="manageFavoritePhoto(photo)"
+            ></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
