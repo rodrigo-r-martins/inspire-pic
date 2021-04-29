@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  unsplash_API_KEY: 'YOUR API KEY GOES HERE'
 };
 
 /*

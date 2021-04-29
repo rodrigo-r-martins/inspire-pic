@@ -9,9 +9,8 @@ import { createApi } from 'unsplash-js';
 export class ApiService {
 
   unsplashApi = createApi({
-    accessKey: environment.unsplash_API_KEY, // ENTER YOUR API KEY
+    accessKey: '', // ENTER YOUR API KEY
   });
-  random = 100;
 
   constructor(private logger: LoggerService) { }
 
