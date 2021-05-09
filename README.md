@@ -1,8 +1,8 @@
 <h1>Inspire-Pic</h1>
 
-• Developed a mobile web application designed to photography lovers that allow them to look for photographies to inspire them capturing the moment. The favorite photography will have the specifications, such as exposure time, aperture and iso, to help users to take the best picture. 
+• Developed a mobile web application designed to photography lovers that allow them to look for photographs to inspire them capturing the moment. The favorite photography will have the specifications, such as exposure time, aperture and iso, to help users to take the best picture. 
 
-• The app was developed using Ionic framework with Angular, fetching the data from Unsplash API (https://unsplash.com/developers) to get the photographies.
+• The app was developed using Ionic framework with Angular, fetching the data from Unsplash API (https://unsplash.com/developers) to get the photographs.
 
 To run it use:
 
