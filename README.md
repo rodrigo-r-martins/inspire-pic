@@ -8,6 +8,6 @@ To run it use:
 
 1) npm install - This command will install all dependencies used in the project;
  
-2) API KEY - Get an API KEY on unsplash website (https://unsplash.com/developers) and add the API KEY in the apiService to run the app;
+2) API KEY - Get an API KEY on unsplash website (https://unsplash.com/developers) and add the API KEY in the src/environment/environment.ts to run the app;
 
 3) ionic serve - This command will start the project;
