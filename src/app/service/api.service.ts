@@ -9,7 +9,7 @@ import { createApi } from 'unsplash-js';
 export class ApiService {
 
   unsplashApi = createApi({
-    accessKey: '', // ENTER YOUR API KEY
+    accessKey: environment.unsplash_api_key, // ENTER YOUR API KEY
   });
 
   constructor(private logger: LoggerService) { }
