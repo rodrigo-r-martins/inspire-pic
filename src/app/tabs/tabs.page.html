@@ -1,8 +1,13 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" *ngIf="this.authService.isLoggedIn || this.authService.isGuest">
     <ion-tab-button tab="home">
       <ion-icon name="aperture"></ion-icon>
       <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="favorites" *ngIf="!this.authService.isGuest">
+      <ion-icon name="heart"></ion-icon>
+      <ion-label>Favorites</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="popular">
@@ -10,14 +15,19 @@
       <ion-label>Popular</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="favorites">
-      <ion-icon name="heart"></ion-icon>
-      <ion-label>Favorites</ion-label>
-    </ion-tab-button>
-
     <ion-tab-button tab="tips">
       <ion-icon name="information-circle"></ion-icon>
       <ion-label>Tips</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="!this.authService.isGuest" (click)="signOut()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Sign Out</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="sign" *ngIf="this.authService.isGuest">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Sign In</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

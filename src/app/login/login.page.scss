@@ -1,0 +1,82 @@
+.login_background {
+  --background: url('../../assets/background.jpg') 0 0/100% 100% no-repeat;
+  background-size: cover;
+}
+
+.login_container {
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+
+  .login_title {
+    color: #000000;
+    h1 {
+      font-size: 55px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0;
+      font-size: 14px;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+
+  .login_backBtn {
+    margin-top: 20vh;
+    align-self: flex-start;
+    color: #000000;
+    span {
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .login_form {
+    margin-top: 5vh;
+    margin-bottom: 10px;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2vh;
+
+      input {
+        font-size: 14px;
+        width: 90vw;
+        height: 40px;
+        opacity: .95;
+        border-radius: 20px;
+        border: none;
+        padding: 5px 20px;
+        color: #000000;
+        background-color: #c7c7c7;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      button {
+        width: 90vw;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+        padding: 5px 20px;
+        background-color: #2e2e2e;
+      }
+    }
+  }
+
+  p {
+    margin-top: 3vh;
+    color: #000000;
+    text-align: center;
+
+    span {
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}

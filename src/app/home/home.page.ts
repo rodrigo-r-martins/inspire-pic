@@ -3,6 +3,7 @@ import { FavoriteService } from './../service/favorite.service';
 import { ApiService } from './../service/api.service';
 import { AfterViewInit, Component } from '@angular/core';
 import { ToastController, ModalController } from '@ionic/angular';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomePage implements AfterViewInit {
     private toast: ToastController,
     private modal: ModalController,
     private favoriteService: FavoriteService,
+    public authService: AuthenticationService
     ) {}
 
   ngAfterViewInit() {
@@ -34,7 +36,6 @@ export class HomePage implements AfterViewInit {
       landscape: this.getPhotos('landscape'),
       travel: this.getPhotos('travel'),
       night: this.getPhotos('night'),
-      abstract: this.getPhotos('abstract'),
       wild: this.getPhotos('wild')
     };
   };
@@ -58,7 +59,7 @@ export class HomePage implements AfterViewInit {
   }
 
   manageFavoritePhoto(photo: {}) {
-    this.favoriteService.manageFavorite(photo);  
+    this.favoriteService.manageFavorite(photo);
   }
 
   async showToast(message: string) {

@@ -24,15 +24,19 @@ const routes: Routes = [
         loadChildren: () => import('../favorites/favorites.module').then(m => m.FavoritesPageModule)
       },
       {
+        path: 'sign',
+        loadChildren: () => import('../sign/sign.module').then(m => m.SignPageModule)
+      },
+      {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/sign',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/sign',
     pathMatch: 'full'
   }
 ];

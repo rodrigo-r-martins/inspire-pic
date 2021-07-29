@@ -17,19 +17,20 @@
 <ion-content>
   <div class="global_content popular_content">
     <div>
-      <h5>#popular</h5>
+      <h5># popular</h5>
     </div>
     <div class="popular_cards">
       <ion-row>
         <ion-card *ngFor="let photo of popularPhotos | async">
           <ion-card-content class="ion-no-padding">
-            <img 
-              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+            <img
+              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}"
               alt="{{ photo.alt_description ? photo.alt_description : 'ERROR LOADING IMAGE..'}}"
               (click)="openPhotoModal(photo.id)"
             >
-            <ion-icon 
-              class="popular_favorite" 
+            <ion-icon
+              *ngIf="!this.authService.isGuest"
+              class="popular_favorite"
               name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
               (click)="manageFavoritePhoto(photo)"
             ></ion-icon>
