@@ -1,0 +1,15 @@
+<ion-content class="sign_background">
+  <div class="sign_container">
+    <div class="sign_title">
+      <h1>InspirePic</h1>
+      <p>Let InspirePic help you take the best photography.</p>
+    </div>
+    <div class="sign_form">
+      <div>
+        <button (click)="openLogin()">Sign In</button>
+        <button (click)="openRegister()">Sign Up</button>
+      </div>
+      <p *ngIf="!this.authService.isGuest">Or continue as a <span (click)="openAsGuest()">Guest</span></p>
+    </div>
+  </div>
+</ion-content>

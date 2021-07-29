@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { ApiService } from './../service/api.service';
 import { FavoriteService } from './../service/favorite.service';
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../service/database.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-favorites',
@@ -16,11 +18,14 @@ export class FavoritesPage implements OnInit {
   constructor(
     private favoriteService: FavoriteService,
     private apiService: ApiService,
-    private modal: ModalController
+    private modal: ModalController,
+    private dbService: DatabaseService,
+    private authService: AuthenticationService
   ) { }
 
-  ngOnInit() {
-    this.favoritePhotos = this.favoriteService.favoritePhotos;
+  async ngOnInit() {
+    await this.dbService.getUserFavoritePhotos(this.authService.user.uid);
+    this.favoritePhotos = this.dbService.favoritePhotos;
   }
 
   async openPhotoModal(photoId: string) {

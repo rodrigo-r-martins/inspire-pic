@@ -1,0 +1,24 @@
+<ion-content class="login_background">
+  <div class="login_container">
+    <div class="login_title">
+      <h1>InspirePic</h1>
+      <p>Let InspirePic help you take the best photography.</p>
+    </div>
+    <div class="login_backBtn">
+      <span (click)="dismissLogin()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        Back
+      </span>
+    </div>
+    <div class="login_form">
+      <form>
+        <input [(ngModel)]="user.email" type="text" name="email" placeholder="Email" />
+        <input [(ngModel)]="user.password" type="password" name="password" placeholder="Password" />
+        <button (click)="login()">
+          Sign In
+        </button>
+      </form>
+    </div>
+    <p>Don't have an account? <span (click)="openRegister()">Sign Up</span></p>
+  </div>
+</ion-content>

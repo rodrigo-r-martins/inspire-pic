@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { FavoriteService } from './../service/favorite.service';
 import { ApiService } from './../service/api.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-popular',
@@ -16,7 +17,8 @@ export class PopularPage implements OnInit {
   constructor(
     private apiService: ApiService,
     private favoriteService: FavoriteService,
-    private modal: ModalController
+    private modal: ModalController,
+    public authService: AuthenticationService
   ) {}
 
   ngOnInit() {

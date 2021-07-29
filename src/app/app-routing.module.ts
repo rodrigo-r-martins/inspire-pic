@@ -13,7 +13,19 @@ const routes: Routes = [
   {
     path: 'cheat-sheet-modal',
     loadChildren: () => import('./cheat-sheet-modal/cheat-sheet-modal.module').then( m => m.CheatSheetModalPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'sign',
+    loadChildren: () => import('./sign/sign.module').then( m => m.SignPageModule)
   }
+
 ];
 @NgModule({
   imports: [
