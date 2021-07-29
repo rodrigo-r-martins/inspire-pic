@@ -12,15 +12,14 @@
       </div>
     </ion-item>
   </ion-toolbar>
-</ion-header>  
+</ion-header>
 
 
 <ion-content>
   <ion-item lines="none" class="home_item_search">
-    <ion-searchbar 
+    <ion-searchbar
       [(ngModel)]="typeOfPhotoInput"
       (ngModelChange)="getInputPhotos()"
-      animated
       placeholder="Search for nature, portrait, minimalist..."
       class="home_search ion-no-border"
     ></ion-searchbar>
@@ -32,18 +31,19 @@
   <div *ngIf="!typeOfPhotoInput">
     <div *ngFor="let style of photos | keyvalue">
       <div class="home_slides">
-        <h5>#{{ style.key }}</h5>
+        <h5># {{ style.key }}</h5>
         <ion-slides [options]="slideOpts">
             <ion-slide *ngFor="let photo of style.value | async">
               <ion-card>
                 <ion-card-content class="ion-no-padding">
-                  <img 
-                    src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+                  <img
+                    src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}"
                     [alt]="photo.alt_description"
                     (click)="openPhotoModal(photo.id)"
                   >
-                  <ion-icon 
-                    class="home_favorite" 
+                  <ion-icon
+                    *ngIf="!this.authService.isGuest"
+                    class="home_favorite"
                     name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
                     (click)="manageFavoritePhoto(photo)"
                   ></ion-icon>
@@ -62,13 +62,14 @@
       <ion-row>
         <ion-card *ngFor="let photo of inputPhotos">
           <ion-card-content class="ion-no-padding">
-            <img 
-              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}" 
+            <img
+              src="{{ photo.urls.regular ? photo.urls.regular : 'assets/not_found_image.png' }}"
               alt="{{ photo.alt_description ? photo.alt_description : 'ERROR LOADING IMAGE..'}}"
               (click)="openPhotoModal(photo.id)"
             >
-            <ion-icon 
-              class="home_favorite_input" 
+            <ion-icon
+              *ngIf="!this.authService.isGuest"
+              class="home_favorite_input"
               name="{{ isFavorite(photo.id) ? 'heart' : 'heart-outline' }}"
               (click)="manageFavoritePhoto(photo)"
             ></ion-icon>

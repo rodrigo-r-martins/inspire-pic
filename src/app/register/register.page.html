@@ -1,0 +1,27 @@
+<ion-content class="register_background">
+  <div class="register_container">
+    <div class="register_title">
+      <h1>InspirePic</h1>
+      <p>Let InspirePic help you take the best photography.</p>
+    </div>
+    <div class="register_backBtn">
+      <span (click)="dismissRegister()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+        Back
+      </span>
+    </div>
+    <div class="register_form">
+      <form>
+        <input [(ngModel)]="user.firstName" type="text" name="firstName" placeholder="First Name" />
+        <input [(ngModel)]="user.lastName" type="text"name="lastName" placeholder="Last Name" />
+        <input [(ngModel)]="user.email" type="text"name="email" placeholder="Email" />
+        <input [(ngModel)]="user.password" type="password"name="password" placeholder="Password" />
+        <input [(ngModel)]="user.passwordConfirm" type="password"name="passwordConfirm" placeholder="Confirm Password" />
+        <button (click)="this.register()">
+          Sign Up
+        </button>
+      </form>
+    </div>
+    <p>Already have an account? <span (click)="openLogin()">Sign In</span></p>
+  </div>
+</ion-content>
