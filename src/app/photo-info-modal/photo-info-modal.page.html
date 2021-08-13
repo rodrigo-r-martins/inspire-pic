@@ -36,6 +36,7 @@
               >
             </pinch-zoom>
             <ion-icon 
+              *ngIf="!this.authService.isGuest"
               class="info_favorite" 
               name="{{ isFavorite(photoData.id) ? 'heart' : 'heart-outline' }}"
               (click)="manageFavoritePhoto(photoData)"

@@ -1,6 +1,7 @@
 import { FavoriteService } from './../service/favorite.service';
 import { ModalController } from '@ionic/angular';
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-photo-info-modal',
@@ -12,7 +13,8 @@ export class PhotoInfoModalPage implements OnInit {
 
   constructor(
     private modal: ModalController,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    public authService: AuthenticationService
   ) { }
 
   ngOnInit() {

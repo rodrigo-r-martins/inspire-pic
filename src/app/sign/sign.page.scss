@@ -44,6 +44,7 @@
           border: none;
           padding: 5px 20px;
           background-color: #2e2e2e;
+          font-size: 16px;
         }
 
         &:last-child {
@@ -56,6 +57,7 @@
           padding: 5px 20px;
           background-color: #ffffff;
           color: #000000;
+          font-size: 16px;
         }
       }
     }
@@ -63,6 +65,7 @@
       text-align: center;
       color: #000000;
       margin: 0 0 20px 0;
+      font-size: 16px;
       span {
         font-weight: 600;
         cursor: pointer;
